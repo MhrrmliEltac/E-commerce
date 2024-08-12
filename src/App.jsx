@@ -1,0 +1,27 @@
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Main from "./Components/Main/Main";
+
+import Navbar from "./Components/Header/Navbar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ProductDetail from "./Components/ProductItem/ProductDetail";
+import Footer from "./Components/Footer/Footer";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="container-fluid">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/productdetail" element={<ProductDetail />} />
+        </Routes>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
