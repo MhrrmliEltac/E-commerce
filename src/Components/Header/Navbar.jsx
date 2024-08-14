@@ -1,14 +1,18 @@
 import React, { useCallback, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { Box, Modal, Typography } from "@mui/material";
+import { MdDelete } from "react-icons/md";
+import addToCart, { deleteProduct } from "../Redux/Slice/addToCart";
+import { deleteFavoriteProduct } from "../Redux/Slice/favouriteSlice";
+import img from "../../img/logo-01.png.png";
 
 const Navbar = () => {
   const addToCartProduct = useSelector(
     (state) => state.addToCartProduct.addToCartProduct
   );
-  const count = useSelector((state) => state.addToCartProduct.value);
+  let count = useSelector((state) => state.addToCartProduct.value);
 
   let totalAmount = addToCartProduct.reduce(
     (acc, item) => acc + item.totalPrice,
@@ -36,12 +40,21 @@ const Navbar = () => {
     setFavoriteOpen(true);
   }, [favoriteOpen]);
 
+  const dispatch = useDispatch();
+
+  const handleAddProductDelete = (id) => {
+    dispatch(deleteProduct(id));
+  };
+  const handleFavoriteProductDelete = (id) => {
+    dispatch(deleteFavoriteProduct(id));
+  };
+
   return (
     <div className="content">
       <nav className="navbar limiter-menu-desktop">
         <div className="nav-left">
           <a href="#" className="logo">
-            <img src="src/img/logo-01.png.png" alt="Logo" />
+            <img src={img} alt="Logo" />
           </a>
           <div className="menu-list">
             <ul className="nav-list">
@@ -120,6 +133,13 @@ const Navbar = () => {
                               {item.quantity}x {item.price}$
                             </p>
                           </Box>
+                          <Box className="icon-box">
+                            <MdDelete
+                              onClick={() => handleAddProductDelete(item.id)}
+                              className="delete-icon"
+                              style={{ fontSize: "20px" }}
+                            />
+                          </Box>
                         </Box>
                       </Box>
                     ))}
@@ -182,9 +202,22 @@ const Navbar = () => {
                               alt={item.title}
                             />
                           </Box>
-                          <Box>
-                            <p style={{ textAlign: "center" }}>{item.title}</p>
-                            <p style={{ textAlign: "end" }}>{item.price}$</p>
+                          <Box style={{ display: "flex" }}>
+                            <Box>
+                              <p style={{ textAlign: "center" }}>
+                                {item.title}
+                              </p>
+                              <p style={{ textAlign: "end" }}>{item.price}$</p>
+                            </Box>
+                            <Box className="icon-box">
+                              <MdDelete
+                                onClick={() =>
+                                  handleFavoriteProductDelete(item.id)
+                                }
+                                className="delete-icon"
+                                style={{ fontSize: "20px" }}
+                              />
+                            </Box>
                           </Box>
                         </Box>
                       </Box>

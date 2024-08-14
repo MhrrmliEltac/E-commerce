@@ -76,40 +76,48 @@ const Main = () => {
           <div className="category-lis">
             <ul className="category-list">
               <li>
-                <a
+                <p
                   onClick={() => handleProductCategory("all")}
                   className="active item"
-                  href="#"
+                  
                 >
                   All Products
-                </a>
+                </p>
               </li>
               <li>
-                <a
+                <p
                   onClick={() => handleProductCategory("women's clothing")}
                   className="item"
-                  href="#"
+                  
                 >
                   Women
-                </a>
+                </p>
               </li>
               <li>
-                <a
+                <p
                   onClick={() => handleProductCategory("men's clothing")}
                   className="item"
-                  href="#"
+                  
                 >
                   Men
-                </a>
+                </p>
               </li>
               <li>
-                <a
+                <p
                   onClick={() => handleProductCategory("jewelery")}
                   className="item"
-                  href="#"
+                  
                 >
                   Jewelery
-                </a>
+                </p>
+              </li>
+              <li>
+                <p
+                  onClick={() => handleProductCategory("electronics")}
+                  className="item"
+                >
+                  Electronics
+                </p>
               </li>
             </ul>
             <div className="buttons">

@@ -26,7 +26,6 @@ export const fetchDataCategory = createAsyncThunk(
     return response.data;
   }
 );
-
 const productSlice = createSlice({
   name: "product",
   initialState,
@@ -49,7 +48,7 @@ const productSlice = createSlice({
       .addCase(fetchProductData.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.product = action.payload;
-        state.filteredProduct = action.payload; // Initially show all products
+        state.filteredProduct = action.payload; 
       })
       .addCase(fetchProductData.rejected, (state, action) => {
         state.status = "failed";

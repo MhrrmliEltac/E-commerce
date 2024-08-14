@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchDataCategory,
@@ -6,7 +6,7 @@ import {
 } from "../Redux/Slice/productSlice";
 import Loader from "../muii/Loader";
 import { addFavoriteProduct } from "../Redux/Slice/favouriteSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdAddShoppingCart } from "react-icons/md";
 import { addToCartProducts, increment } from "../Redux/Slice/addToCart";
 
@@ -31,6 +31,14 @@ const Product = () => {
     dispatch(fetchDataCategory());
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleGoToItemTitle = (item) => {
+    navigate(`/productdetail/${item.title}`, {
+      state: { productItem: item },
+    });
+  };
+
   return (
     <div className="products">
       <div className="row">
@@ -45,20 +53,31 @@ const Product = () => {
                 </div>
                 <div className="info-img">
                   <div className="description">
-                    <Link to="productdetail" className="product-title">
+                    <Link
+                      onClick={() => {
+                        handleGoToItemTitle(item);
+                      }}
+                      to={`/productdetail/${item.title}`}
+                      className="product-title"
+                    >
                       {item.title}
                     </Link>
+
                     <p className="price">$ {item.price}</p>
                   </div>
                   <div className="icon">
                     <i
-                      onClick={() => handleAddFavoriteProduct(item)}
+                      onClick={() => {
+                        handleAddFavoriteProduct(item);
+                      }}
                       className="fa-regular fa-heart"
                     ></i>
                     <MdAddShoppingCart
                       className="basket"
                       style={{ cursor: "pointer" }}
-                      onClick={() => handleAddToCart(item)}
+                      onClick={() => {
+                        handleAddToCart(item);
+                      }}
                     />
                   </div>
                 </div>

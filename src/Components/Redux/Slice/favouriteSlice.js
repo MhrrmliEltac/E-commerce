@@ -16,8 +16,14 @@ const favouriteProductSlice = createSlice({
         state.favouriteProduct.push(action.payload);
       }
     },
+    deleteFavoriteProduct: (state, action) => {
+      state.favouriteProduct = state.favouriteProduct.filter(
+        (product) => product.id !== action.payload
+      );
+    },
   },
 });
 
-export const { addFavoriteProduct } = favouriteProductSlice.actions;
+export const { addFavoriteProduct, deleteFavoriteProduct } =
+  favouriteProductSlice.actions;
 export default favouriteProductSlice.reducer;

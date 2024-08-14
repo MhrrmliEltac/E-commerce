@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const addToCartProductSlice = createSlice({
-  name: "favouriteProduct",
+  name: "addToCartProduct",
   initialState,
   reducers: {
     addToCartProducts: (state, action) => {
@@ -32,14 +32,20 @@ const addToCartProductSlice = createSlice({
     decrement: (state) => {
       state.value -= 1;
     },
-    delete: (state, action) => {
-      state.addToCartProduct.filter(
-        (product) => product.id !== action.payload.id
+    deleteProduct: (state, action) => {
+      const productToRemove = state.addToCartProduct.find(
+        (product) => product.id === action.payload
       );
+      if (productToRemove) {
+        state.value -= productToRemove.quantity;
+        state.addToCartProduct = state.addToCartProduct.filter(
+          (product) => product.id !== action.payload
+        );
+      }
     },
   },
 });
 
-export const { increment, decrement, addToCartProducts } =
+export const { increment, decrement, addToCartProducts, deleteProduct } =
   addToCartProductSlice.actions;
 export default addToCartProductSlice.reducer;

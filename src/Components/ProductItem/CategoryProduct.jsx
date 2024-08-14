@@ -1,11 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../muii/Loader";
 import { MdAddShoppingCart } from "react-icons/md";
+import { addFavoriteProduct } from "../Redux/Slice/favouriteSlice";
+import { addToCartProducts, increment } from "../Redux/Slice/addToCart";
+import { Link } from "react-router-dom";
 
 const CategoryProduct = () => {
   const status = useSelector((state) => state.product.status);
   const filteredProduct = useSelector((state) => state.product.filteredProduct);
+  const dispatch = useDispatch();
+
+  const handleAddFavoriteProduct = (product) => {
+    dispatch(addFavoriteProduct(product));
+  };
+  const handleAddToCart = (product) => {
+    dispatch(addToCartProducts(product));
+    dispatch(increment());
+  };
 
   return (
     <div className="products">
@@ -21,12 +33,21 @@ const CategoryProduct = () => {
                 </div>
                 <div className="info-img">
                   <div className="description">
-                    <p className="product-title">{item.title}</p>
+                    <Link to="productdetail" className="product-title">
+                      {item.title}
+                    </Link>
                     <p className="price">$ {item.price}</p>
                   </div>
                   <div className="icon">
-                    <i className="fa-regular fa-heart"></i>
-                    <MdAddShoppingCart />
+                    <i
+                      onClick={() => handleAddFavoriteProduct(item)}
+                      className="fa-regular fa-heart"
+                    ></i>
+                    <MdAddShoppingCart
+                      className="basket"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleAddToCart(item)}
+                    />
                   </div>
                 </div>
               </div>
