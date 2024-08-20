@@ -5,7 +5,7 @@ import { Box, Modal, Typography } from "@mui/material";
 import { MdDelete } from "react-icons/md";
 import addToCart, { deleteProduct } from "../Redux/Slice/addToCart";
 import { deleteFavoriteProduct } from "../Redux/Slice/favouriteSlice";
-import img from "../../img/logo-01.png.png";
+import img from "../../../public/img/logo-01.png.png";
 import { FaBars } from "react-icons/fa"; // Hamburger menü ikonu için
 import { useDispatch, useSelector } from "react-redux";
 
@@ -87,7 +87,7 @@ const Navbar = () => {
                 About
               </li>
               <Link
-              to="/contact"
+                to="/contact"
                 onClick={() => setColor("Contact")}
                 className={`navbar-item ${color === "Contact" ? "color" : ""}`}
               >
