@@ -1,5 +1,4 @@
-import React, { useCallback, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { Box, Modal, Typography } from "@mui/material";
@@ -7,44 +6,53 @@ import { MdDelete } from "react-icons/md";
 import addToCart, { deleteProduct } from "../Redux/Slice/addToCart";
 import { deleteFavoriteProduct } from "../Redux/Slice/favouriteSlice";
 import img from "../../img/logo-01.png.png";
+import { FaBars } from "react-icons/fa"; // Hamburger menü ikonu için
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
+  const [basketOpen, setBasketOpen] = useState(false);
+  const [favoriteOpen, setFavoriteOpen] = useState(false);
+  const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
+
+  const [color, setColor] = useState("Home");
+
+  const handleBurgerMenuToggle = () => {
+    setBurgerMenuOpen(!burgerMenuOpen);
+  };
+
+  const handleBasketClose = () => {
+    setBasketOpen(false);
+  };
+
+  const handleBasketOpen = () => {
+    setBasketOpen(true);
+  };
+
+  const handleFavoriteClose = () => {
+    setFavoriteOpen(false);
+  };
+
+  const handleFavoriteOpen = () => {
+    setFavoriteOpen(true);
+  };
+
+  const dispatch = useDispatch();
   const addToCartProduct = useSelector(
     (state) => state.addToCartProduct.addToCartProduct
   );
   let count = useSelector((state) => state.addToCartProduct.value);
-
   let totalAmount = addToCartProduct.reduce(
     (acc, item) => acc + item.totalPrice,
     0
   );
-
   const favoriteProduct = useSelector(
     (state) => state.favoriteProduct.favouriteProduct
   );
 
-  const [basketOpen, setBasketOpen] = useState(false);
-  const [favoriteOpen, setFavoriteOpen] = useState(false);
-
-  const handleBasketClose = useCallback(() => {
-    setBasketOpen(false);
-  }, [basketOpen]);
-  const handleBasketOpen = useCallback(() => {
-    setBasketOpen(true);
-  }, [basketOpen]);
-
-  const handleFavoriteClose = useCallback(() => {
-    setFavoriteOpen(false);
-  }, [favoriteOpen]);
-  const handleFavoriteOpen = useCallback(() => {
-    setFavoriteOpen(true);
-  }, [favoriteOpen]);
-
-  const dispatch = useDispatch();
-
   const handleAddProductDelete = (id) => {
     dispatch(deleteProduct(id));
   };
+
   const handleFavoriteProductDelete = (id) => {
     dispatch(deleteFavoriteProduct(id));
   };
@@ -52,22 +60,42 @@ const Navbar = () => {
   return (
     <div className="content">
       <nav className="navbar limiter-menu-desktop">
-        <div className="nav-left">
+        <div className={`nav-left`}>
           <a href="#" className="logo">
             <img src={img} alt="Logo" />
           </a>
-          <div className="menu-list">
+          <div className={`menu-list`}>
             <ul className="nav-list">
-              <Link to="/" className="nav-item active">
+              <Link
+                to="/"
+                onClick={() => setColor("Home")}
+                className={`navbar-item ${color === "Home" ? "color" : ""}`}
+              >
                 Home
               </Link>
-              <li className="nav-item">Shop</li>
-              <li className="nav-item">About</li>
-              <li className="nav-item">Contact</li>
+              <Link
+                to="/shop"
+                onClick={() => setColor("Shop")}
+                className={`navbar-item ${color === "Shop" ? "color" : ""}`}
+              >
+                Shop
+              </Link>
+              <li
+                onClick={() => setColor("About")}
+                className={`navbar-item ${color === "About" ? "color" : ""}`}
+              >
+                About
+              </li>
+              <li
+                onClick={() => setColor("Contact")}
+                className={`navbar-item ${color === "Contact" ? "color" : ""}`}
+              >
+                Contact
+              </li>
             </ul>
           </div>
         </div>
-        <div className="nav-right">
+        <div className={`nav-right`}>
           <ul className="icon-list">
             <li className="icon-item">
               <i className="fa-solid fa-magnifying-glass"></i>
@@ -96,7 +124,6 @@ const Navbar = () => {
                     >
                       YOUR CART
                     </Typography>
-
                     <IoMdClose
                       style={{ cursor: "pointer", fontSize: "22px" }}
                       onClick={handleBasketClose}
@@ -171,7 +198,6 @@ const Navbar = () => {
                     >
                       YOUR FAVORITES
                     </Typography>
-
                     <IoMdClose
                       style={{ cursor: "pointer", fontSize: "22px" }}
                       onClick={handleFavoriteClose}
@@ -227,8 +253,21 @@ const Navbar = () => {
               </Modal>
             </li>
           </ul>
+          <div className="burger-menu">
+            <FaBars onClick={handleBurgerMenuToggle} />
+          </div>
         </div>
       </nav>
+      <div className={`menu-list-burger ${burgerMenuOpen ? "open" : ""}`}>
+        <ul className="nav-list">
+          <Link to="/" className="navbar-item active">
+            Home
+          </Link>
+          <li className="navbar-item">Shop</li>
+          <li className="navbar-item">About</li>
+          <li className="navbar-item">Contact</li>
+        </ul>
+      </div>
     </div>
   );
 };

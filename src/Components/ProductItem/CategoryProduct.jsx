@@ -21,13 +21,13 @@ const CategoryProduct = () => {
 
   return (
     <div className="products">
-      <div className="row">
+      <div className="row-product">
         {status === "loading" ? (
           <Loader />
         ) : (
           filteredProduct.map((item) => (
-            <div className="col" key={item.id}>
-              <div className="card">
+            <div className="col-product" key={item.id}>
+              <div className="card-product">
                 <div className="card-img">
                   <img src={item.image} alt={item.title} />
                 </div>

@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { FaFacebookF } from "react-icons/fa";
-import { FaPinterestP } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
+import { FaFacebookF, FaPinterestP, FaInstagram } from "react-icons/fa";
+import { notification } from "antd";
 
 const Footer = () => {
+  const [api, contextHolder] = notification.useNotification();
+
   const form = useRef();
   const userName = useRef();
   const userEmail = useRef();
@@ -23,16 +24,25 @@ const Footer = () => {
       emailjs
         .sendForm(serviceId, templateId, form.current, publicKey)
         .then(() => {
-          return;
+          api.success({
+            message: "Success",
+            description: `Mesajınız uğurla göndərildi, ${nameValue}!`,
+            placement: "topRight",
+          });
         })
         .catch((err) => {
-          alert("Serverde xəta var", err);
+          api.error({
+            message: "Error",
+            description: "Serverde xəta var. Mesaj göndərilə bilmədi.",
+            placement: "topRight",
+          });
         });
     }
   };
 
   return (
     <footer>
+      {contextHolder}
       <section className="footer-container">
         <div className="footer-list">
           <ul className="category-list">
@@ -56,7 +66,7 @@ const Footer = () => {
           <ul className="get-in-touch">
             <li className="heading">GET IN TOUCH</li>
             <ul className="list">
-              <li>
+              <li className="description">
                 Any questions? Let us know in store at 8th floor, 379 Hudson St,
                 New York, NY 10018 or call us on (+1) 96 716 6879
               </li>
@@ -106,14 +116,13 @@ const Footer = () => {
                     className="user_email"
                   />
                   <label>Message</label>
-                  <textarea name="message" className="message-box" />
-                  <input type="submit" value="Send" className="sub-btn" />
+                  <textarea name="message" className="message-box-footer" />
+                  <input className="sub-btn" type="submit" value="Send" />
                 </form>
               </li>
             </ul>
           </ul>
         </div>
-        <div className="payment-rule"></div>
       </section>
     </footer>
   );

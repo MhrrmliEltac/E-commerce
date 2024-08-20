@@ -2,17 +2,23 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import { addToCartProducts } from "../Redux/Slice/addToCart";
+import {
+  addToCartProductDetail,
+  addToCartProducts,
+  decrementCounter,
+  incrementCounter,
+} from "../Redux/Slice/addToCart";
 
 const ProductDetail = () => {
   const { title } = useParams();
-  let [countProduct, setCountProduct] = useState(0);
+  let counter = useSelector((state) => state.addToCartProduct.counter);
+
   const handleCountIncrement = () => {
-    setCountProduct((prevCount) => prevCount + 1);
+    dispatch(incrementCounter());
   };
 
   const handleCountDecrement = () => {
-    setCountProduct((prevCount) => (prevCount > 0 ? prevCount - 1 : 0));
+    dispatch(decrementCounter());
   };
 
   const handleInputChange = (e) => {
@@ -21,7 +27,7 @@ const ProductDetail = () => {
 
   const dispatch = useDispatch();
   const handleAddToCart = (product) => {
-    dispatch(addToCartProducts(product));
+    dispatch(addToCartProductDetail(product));
   };
 
   const products = useSelector((state) => state.product.product);
@@ -78,7 +84,7 @@ const ProductDetail = () => {
                     className="num-product"
                     type="number"
                     name="num-product"
-                    value={countProduct}
+                    value={counter}
                   ></input>
                   <div
                     onClick={handleCountIncrement}

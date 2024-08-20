@@ -1,4 +1,7 @@
-* {
+*,
+ul,
+li,
+ol {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,10 +11,16 @@
 i {
   cursor: pointer;
 }
+.shop-section {
+  margin-top: 70px;
+}
 .basket:hover {
   color: #6c7ae0;
   transition: all 0.5s;
   cursor: pointer;
+}
+.color {
+  color: #6c7ae0;
 }
 .logo {
   display: flex;
@@ -43,7 +52,8 @@ i {
     margin: 0;
     display: flex;
     align-items: center;
-    .nav-item {
+    .navbar-item {
+      text-decoration: none;
       cursor: pointer;
       font-weight: bold;
       display: block;
@@ -54,29 +64,27 @@ i {
     .active {
       color: #6c7ae0;
     }
-    .nav-item:hover {
+    .navbar-item:hover {
       color: #6c7ae0;
       transition: color 0.5s;
     }
   }
 }
 .limiter-menu-desktop {
-  position: fixed;
-  background: white;
-  z-index: 1;
   display: flex;
   align-items: center;
   display: flex;
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  margin-bottom: 20px;
 }
 .content {
-  display: flex;
-  justify-content: center;
+  top: 0;
+  position: fixed;
+  background: white;
+  z-index: 1;
+  width: 100%;
 }
 body,
 html {
@@ -138,7 +146,7 @@ html {
   justify-content: space-between;
   margin: 0 auto;
   margin-top: 40px;
-  .card {
+  .card-product {
     margin: 40px 0px;
     border: 1px solid rgba(0, 0, 0, 0.127);
     width: 33%;
@@ -194,11 +202,11 @@ html {
       .active {
         color: black;
         text-decoration: underline;
+        transition: all 1.2s;
       }
       .item:hover {
-        color: black;
         text-decoration: underline;
-        transition: all ease-out 0.5s;
+        color: black;
       }
     }
   }
@@ -236,10 +244,10 @@ html {
   width: 90%;
   margin: 0 auto;
 }
-.row {
+.row-product {
   display: flex;
   flex-wrap: wrap;
-  .col {
+  .col-product {
     width: 33%;
     margin: 20px 0px;
 
@@ -411,6 +419,7 @@ footer {
         flex-direction: column;
         height: 40%;
         justify-content: space-between;
+        color: white;
         form {
           display: flex;
           flex-direction: column;
@@ -432,10 +441,11 @@ footer {
             outline: none;
             color: white;
           }
-          .message-box {
+          .message-box-footer {
             width: 100%;
             height: 100px;
             background: inherit;
+            border: 1px solid white;
             color: white;
             margin-top: 10px;
           }
@@ -589,4 +599,235 @@ input[type="number"]::-webkit-outer-spin-button {
 .price-product {
   font-size: 20px;
   font-weight: bold;
+}
+.menu-list-burger {
+  display: none;
+  .nav-list {
+    margin: 0 auto;
+    width: 90%;
+    font-size: 18px;
+    .navbar-item {
+      margin: 10px 0px;
+    }
+    .navbar-item:hover {
+      color: #6c7ae0;
+    }
+  }
+}
+.open {
+  display: block;
+}
+.menu-list {
+  display: flex;
+}
+
+.burger-menu {
+  display: none;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1024px) {
+  .category {
+    flex-wrap: wrap;
+    margin-top: 70px;
+    .card-product {
+      width: 45%;
+      margin: 10px auto;
+      justify-content: space-around;
+      .description {
+        h3 {
+          font-size: 22px;
+        }
+      }
+      .img {
+        width: 40%;
+      }
+    }
+  }
+  .container-product {
+    & .category-lis {
+      .category-list {
+        width: 45%;
+      }
+    }
+    .buttons {
+      width: 23%;
+    }
+  }
+  .row-product {
+    & .col-product {
+      & .info-img {
+        width: 100%;
+        & .icon {
+          font-size: 18px;
+        }
+        & .description {
+          & .product-title {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 990px) {
+  .products {
+    width: 100%;
+    .row-product {
+      & .col-product {
+        .card-img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  footer {
+    .footer-container {
+      .footer-list {
+        flex-wrap: wrap;
+        .news-letter {
+          .list {
+            width: 100%;
+          }
+        }
+        ul {
+          width: 45%;
+          margin: 10px 0px;
+          .heading {
+            font-size: 12px;
+            font-weight: bold;
+          }
+
+          li {
+            font-size: 12px;
+            margin: 10px 0px;
+          }
+        }
+        .get-in-touch {
+          width: 45%;
+          .description {
+            width: 150%;
+          }
+          .icon-list {
+            width: 50%;
+            li {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .menu-list {
+    display: none;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+  .content {
+    padding: 2% 0%;
+  }
+  .menu-list-burger {
+    height: 100vh;
+  }
+  .nav-right {
+    width: 20%;
+    justify-content: space-between;
+    .icon-list {
+      width: 70%;
+    }
+    .burger-menu {
+      font-size: 18px;
+    }
+  }
+  .row-product {
+    .col-product {
+      width: 45%;
+      margin: 0 auto;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .container-product {
+    .category-lis {
+      flex-wrap: wrap;
+      margin: 40px 0px;
+      .category-list {
+        width: 80%;
+        margin-bottom: 10px;
+      }
+      .buttons {
+        width: 35%;
+      }
+    }
+  }
+  .products {
+    width: 100%;
+    .row-product {
+      & .col-product {
+        .card-img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .category {
+    width: 100%;
+    .card-product {
+      width: 90%;
+      margin: 10px auto;
+      justify-content: space-around;
+      height: 250px;
+      .img {
+        width: 60%;
+        img {
+          width: 100%;
+          height: 220px;
+        }
+      }
+    }
+  }
+  .products {
+    width: 90%;
+    .row-product {
+      & .col-product {
+        width: 100%;
+        .card-img {
+          width: 100%;
+        }
+        .info-img {
+          width: 100%;
+          .description {
+            font-size: 18px;
+            .product-title {
+              font-size: 18px;
+            }
+          }
+          .icon {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    & .footer-container {
+      & .footer-list {
+        ul {
+          width: 100%;
+          margin: 10px 0px;
+        }
+      }
+    }
+  }
+
+  .nav-right {
+    width: 25%;
+  }
 }
