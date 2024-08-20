@@ -7,6 +7,9 @@ import {
   filterByCategory,
 } from "../Redux/Slice/productSlice";
 import CategoryProduct from "../ProductItem/CategoryProduct";
+import banner01 from "../../../public/banner-01.jpg.png";
+import banner02 from "../../../public/banner-02.jpg.png";
+import banner03 from "../../../public/banner-03.jpg.png";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -37,11 +40,7 @@ const Main = () => {
               <p>Spring 2018</p>
             </div>
             <div className="img">
-              <img
-                width={"100px"}
-                src="public\banner-01.jpg.png"
-                alt="Women"
-              />
+              <img width={"100px"} src={banner01} alt="Women" />
             </div>
           </div>
           <div
@@ -53,11 +52,7 @@ const Main = () => {
               <p>Spring 2018</p>
             </div>
             <div className="img">
-              <img
-                width={"100px"}
-                src="public/banner-02.jpg.png"
-                alt="Men"
-              />
+              <img width={"100px"} src={banner02} alt="Men" />
             </div>
           </div>
           <div
@@ -69,7 +64,7 @@ const Main = () => {
               <p>New Trend</p>
             </div>
             <div className="img">
-              <img src="public/banner-03.jpg.png" alt="Accessories" />
+              <img src={banner03} alt="Accessories" />
             </div>
           </div>
         </div>
