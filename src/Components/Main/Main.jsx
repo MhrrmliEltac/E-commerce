@@ -39,7 +39,7 @@ const Main = () => {
             <div className="img">
               <img
                 width={"100px"}
-                src="public\img\banner-01.jpg.png"
+                src="public\banner-01.jpg.png"
                 alt="Women"
               />
             </div>
@@ -55,7 +55,7 @@ const Main = () => {
             <div className="img">
               <img
                 width={"100px"}
-                src="public/img/banner-02.jpg.png"
+                src="public/banner-02.jpg.png"
                 alt="Men"
               />
             </div>
@@ -69,7 +69,7 @@ const Main = () => {
               <p>New Trend</p>
             </div>
             <div className="img">
-              <img src="public/img/banner-03.jpg.png" alt="Accessories" />
+              <img src="public/banner-03.jpg.png" alt="Accessories" />
             </div>
           </div>
         </div>
