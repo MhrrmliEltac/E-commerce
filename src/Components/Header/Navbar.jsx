@@ -261,12 +261,33 @@ const Navbar = () => {
       </nav>
       <div className={`menu-list-burger ${burgerMenuOpen ? "open" : ""}`}>
         <ul className="nav-list">
-          <Link to="/" className="navbar-item active">
+          <Link
+            to="/"
+            onClick={() => setColor("Home")}
+            className={`navbar-item ${color === "Home" ? "color" : ""}`}
+          >
             Home
           </Link>
-          <li className="navbar-item">Shop</li>
-          <li className="navbar-item">About</li>
-          <li className="navbar-item">Contact</li>
+          <Link
+            to="/shop"
+            onClick={() => setColor("Shop")}
+            className={`navbar-item ${color === "Shop" ? "color" : ""}`}
+          >
+            Shop
+          </Link>
+          <li
+            onClick={() => setColor("About")}
+            className={`navbar-item ${color === "About" ? "color" : ""}`}
+          >
+            About
+          </li>
+          <Link
+            to="/contact"
+            onClick={() => setColor("Contact")}
+            className={`navbar-item ${color === "Contact" ? "color" : ""}`}
+          >
+            Contact
+          </Link>
         </ul>
       </div>
     </div>

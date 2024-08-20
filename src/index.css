@@ -606,6 +606,8 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0 auto;
     width: 90%;
     font-size: 18px;
+    display: flex;
+    flex-direction: column;
     .navbar-item {
       margin: 10px 0px;
     }
