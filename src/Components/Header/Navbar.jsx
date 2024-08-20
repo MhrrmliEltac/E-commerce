@@ -61,9 +61,9 @@ const Navbar = () => {
     <div className="content">
       <nav className="navbar limiter-menu-desktop">
         <div className={`nav-left`}>
-          <a href="#" className="logo">
+          <Link onClick={() => setColor("Home")} to="/" className="logo">
             <img src={img} alt="Logo" />
-          </a>
+          </Link>
           <div className={`menu-list`}>
             <ul className="nav-list">
               <Link
@@ -86,12 +86,13 @@ const Navbar = () => {
               >
                 About
               </li>
-              <li
+              <Link
+              to="/contact"
                 onClick={() => setColor("Contact")}
                 className={`navbar-item ${color === "Contact" ? "color" : ""}`}
               >
                 Contact
-              </li>
+              </Link>
             </ul>
           </div>
         </div>

@@ -52,17 +52,16 @@ const addToCartProductSlice = createSlice({
         product.quantity += state.counter;
         product.totalPrice =
           Math.round((product.totalPrice + action.payload.price) * 100) / 100;
-      } else {
+      } else if (state.counter > 0) {
         state.addToCartProduct.push({
           ...action.payload,
           quantity: state.counter,
           totalPrice: Math.round(action.payload.price * 100) / 100,
         });
       }
-      if(state.value === 0){
+      if (state.value === 0) {
         state.value = state.counter;
-      }
-      else{
+      } else {
         state.value += state.counter;
       }
     },

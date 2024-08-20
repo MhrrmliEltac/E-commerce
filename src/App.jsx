@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductDetail from "./Components/ProductItem/ProductDetail";
 import Footer from "./Components/Footer/Footer";
 import Shop from "./Components/Pages/Shop";
+import Contact from "./Components/Pages/Contact";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/productdetail/:title" element={<ProductDetail />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </div>

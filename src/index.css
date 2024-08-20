@@ -625,6 +625,76 @@ input[type="number"]::-webkit-outer-spin-button {
   display: none;
 }
 
+.contact-section {
+  background-image: url(https://preview.colorlib.com/theme/cozastore/images/bg-01.jpg.webp);
+  margin-top: 70px;
+  padding: 6% 2%;
+  h2 {
+    color: white;
+    text-align: center;
+    font-family: Roboto;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 1.1;
+  }
+}
+.info-contact {
+  width: 60%;
+  margin: 20px auto;
+  border: 2px solid #e6e6e6;
+  padding: 2%;
+  h2 {
+    text-align: center;
+    color: black;
+    font-weight: 500;
+    font-family: Roboto;
+    font-size: 25px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    width: 60%;
+    margin: 0 auto;
+    .message-box {
+      padding: 2%;
+      min-height: 199px;
+      width: 100%;
+      outline: none;
+      border: 1px solid #e6e6e6;
+      margin-bottom: 10px;
+    }
+    .submit-btn {
+      border: none;
+      border-radius: 20px;
+      background: black;
+      color: white;
+      padding: 2% 4%;
+      font-family: Roboto;
+      cursor: pointer;
+      transition: all 0.5s;
+    }
+    .submit-btn:hover {
+      background-color: #6c7ae0;
+      transition: all 0.5s;
+    }
+    .input {
+      border: 1px solid #e6e6e6;
+      display: flex;
+      margin: 15px 0px;
+      align-items: center;
+      justify-content: space-around;
+      input {
+        width: 80%;
+        border: none;
+        background: transparent;
+        color: black;
+        outline: none;
+      }
+    }
+  }
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 1024px) {
