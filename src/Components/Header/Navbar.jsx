@@ -275,12 +275,12 @@ const Navbar = () => {
           >
             Shop
           </Link>
-          <li
+          <Link
             onClick={() => setColor("About")}
             className={`navbar-item ${color === "About" ? "color" : ""}`}
           >
             About
-          </li>
+          </Link>
           <Link
             to="/contact"
             onClick={() => setColor("Contact")}
