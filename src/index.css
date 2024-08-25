@@ -906,3 +906,29 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 25%;
   }
 }
+@media (max-width: 425px) {
+  .nav-right {
+    width: 30%;
+    .icon-list {
+      width: 80%;
+    }
+  }
+
+  .container-product {
+    & .category-lis {
+      .buttons {
+        width: 58%;
+      }
+    }
+  }
+
+  .container-product {
+    & .category-lis {
+      & .category-list {
+        .item {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
