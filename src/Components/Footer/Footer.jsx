@@ -31,6 +31,7 @@ const Footer = () => {
           });
         })
         .catch((err) => {
+          console.log(err);
           api.error({
             message: "Error",
             description: "Serverde xəta var. Mesaj göndərilə bilmədi.",
