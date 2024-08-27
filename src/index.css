@@ -856,6 +856,9 @@ input[type="number"]::-webkit-outer-spin-button {
       }
     }
   }
+  .product-detail{
+    margin-top: 55px;
+  }
 }
 @media (max-width: 576px) {
   .category {
@@ -911,6 +914,19 @@ input[type="number"]::-webkit-outer-spin-button {
 
   .nav-right {
     width: 25%;
+  }
+  .product{
+    flex-direction: column;
+    .card-img{
+      width: 100% !important;
+    }
+    .details{
+      width: 100% !important;
+      margin-top: 10px;
+      .product-cart{
+        align-items: flex-start;
+      }
+    }
   }
 }
 @media (max-width: 425px) {
