@@ -1,3 +1,5 @@
+
+
 *,
 ul,
 li,
@@ -9,6 +11,11 @@ ol {
   text-decoration: none;
 }
 i {
+  cursor: pointer;
+}
+.icon-font{
+  transition: ease-in 0.5s;
+  font-size: 20px;
   cursor: pointer;
 }
 .shop-section {

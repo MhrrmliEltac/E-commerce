@@ -7,7 +7,10 @@ import addToCart, { deleteProduct } from "../Redux/Slice/addToCart";
 import { deleteFavoriteProduct } from "../Redux/Slice/favouriteSlice";
 import img from "../../../public/logo-01.png.png";
 import { FaBars } from "react-icons/fa"; // Hamburger menü ikonu için
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { useDispatch, useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [basketOpen, setBasketOpen] = useState(false);
@@ -255,7 +258,19 @@ const Navbar = () => {
             </li>
           </ul>
           <div className="burger-menu">
-            <FaBars onClick={handleBurgerMenuToggle} />
+            {burgerMenuOpen ? (
+              <FontAwesomeIcon
+                className="icon-font"
+                onClick={handleBurgerMenuToggle}
+                icon={faXmark}
+              />
+            ) : (
+              <FontAwesomeIcon
+                className="icon-font"
+                onClick={handleBurgerMenuToggle}
+                icon={faBars}
+              />
+            )}
           </div>
         </div>
       </nav>
