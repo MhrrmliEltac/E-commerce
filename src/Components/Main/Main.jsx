@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Product from "../ProductItem/Product";
+import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchDataCategory,
@@ -10,11 +11,13 @@ import CategoryProduct from "../ProductItem/CategoryProduct";
 import banner01 from "../../../public/banner-01.jpg.png";
 import banner02 from "../../../public/banner-02.jpg.png";
 import banner03 from "../../../public/banner-03.jpg.png";
+import { Flex } from "antd";
 
 const Main = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [underline, setUnderline] = useState("All");
+  const [searchInp, setSearchInp] = useState(false);
 
   useEffect(() => {
     dispatch(fetchProductData());
@@ -25,6 +28,10 @@ const Main = () => {
     dispatch(filterByCategory(category));
     setShow(true);
     setUnderline("All");
+  };
+
+  const handleShowSearchBox = () => {
+    setSearchInp((prev) => !prev);
   };
 
   return (
@@ -135,11 +142,33 @@ const Main = () => {
               <button className="filter">
                 <i className="fa-solid fa-filter"></i>Filter
               </button>
-              <button className="search">
+              <button onClick={handleShowSearchBox} className="search">
                 <i className="fa-solid fa-magnifying-glass"></i>Search
               </button>
             </div>
           </div>
+
+          <AnimatePresence>
+            {searchInp && (
+              <motion.div
+                className={`search-box ${searchInp ? "entering" : ""}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5}}
+              >
+                <button className="btn-search">
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input
+                  placeholder="Search"
+                  type="search"
+                  name="search"
+                  id="search"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {!show ? <Product /> : <CategoryProduct />}

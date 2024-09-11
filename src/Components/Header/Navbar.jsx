@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { Box, Modal, Typography } from "@mui/material";
 import { MdDelete } from "react-icons/md";
-import addToCart, { deleteProduct } from "../Redux/Slice/addToCart";
+import { deleteProduct } from "../Redux/Slice/addToCart";
 import { deleteFavoriteProduct } from "../Redux/Slice/favouriteSlice";
 import img from "../../../public/logo-01.png.png";
-import { FaBars } from "react-icons/fa"; // Hamburger menü ikonu için
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
