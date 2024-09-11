@@ -29,7 +29,14 @@ const CategoryProduct = () => {
             <div className="col-product" key={item.id}>
               <div className="card-product">
                 <div className="card-img">
-                  <img src={item.image} alt={item.title} />
+                  <Link
+                    onClick={() => {
+                      handleGoToItemTitle(item);
+                    }}
+                    to={`/productdetail/${item.title}`}
+                  >
+                    <img src={item.image} alt={item.title} />
+                  </Link>
                 </div>
                 <div className="info-img">
                   <div className="description">
